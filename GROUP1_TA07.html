@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FOXE | The Market Never Sleeps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Zen+Dots&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: linear-gradient(to bottom, #ff947a, #4ecdc4);
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background: linear-gradient(to right, #ff947a, #4ecdc4);
+      border: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .navbar-brand span {
+      font-family: 'Pacifico', cursive;
+      font-size: 28px;
+      color: #000;
+    }
+    .navbar-nav > li > a {
+      color: #000 !important;
+      font-weight: bold;
+    }
+    .hero {
+      position: relative;
+      background: url('1.jpg') no-repeat center center;
+      background-size: cover;
+      text-align: center;
+      padding: 160px 20px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      opacity: 0.45;
+      z-index: 1;
+      filter: blur(6px);
+    }
+    .hero h1, .hero p {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 60px;
+    }
+    .hero p {
+      font-family: 'Zen Dots', sans-serif;
+      font-size: 26px;
+      font-weight: normal;
+      color: #000;
+      background-color: rgba(255, 255, 255, 0.6);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      letter-spacing: 1px;
+    }
+    .logo-text {
+      font-size: 60px;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(to bottom, #ff947a 0%, #f4a261 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-title {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #000;
+      text-align: center;
+      margin: 30px 0 40px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .meaning-box {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .meaning-box i {
+      font-size: 50px;
+      color: #000;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .meaning-box h4 {
+      color: #000;
+      font-weight: bold;
+    }
+    .meaning-box p {
+      font-size: 15px;
+      color: #000;
+    }
+    #whatwedo .card {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid #000;
+      border-radius: 16px;
+      padding: 15px;
+      text-align: center;
+      height: auto;
+      min-height: 250px;
+      margin-bottom: 15px;
+      color: #000;
+    }
+    #whatwedo .card h4 {
+      color: #000;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    #whatwedo .card p {
+      font-size: 14px;
+    }
+    #whatwedo .card i {
+      font-size: 36px;
+      color: #000;
+      margin-bottom: 10px;
+    }
+    .carousel-inner .item {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .member-box {
+      flex-direction: row;
+      justify-content: center;
+      text-align: left;
+      background-color: #fefae0;
+      color: #000;
+      padding: 30px;
+      border-radius: 16px;
+      width: 60%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .member-box img {
+      width: 100px;
+      border-radius: 8px;
+    }
+    .member-info h4 {
+      margin: 8px 0;
+      color: #003366;
+      font-weight: bold;
+    }
+    .member-info p {
+      margin: 8px 0;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid #000;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      height: auto;
+      min-height: 360px;
+      margin-bottom: 20px;
+      color: #000;
+    }
+    .card h4 {
+      color: #000;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    .card p {
+      font-size: 15px;
+    }
+    .card i {
+      font-size: 36px;
+      color: #000;
+      margin-bottom: 10px;
+    }
+    .contact-section {
+      padding: 80px 20px;
+      color: #000;
+      text-align: left;
+    }
+    .contact-form, .contact-info {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 40px;
+      border-radius: 12px;
+      height: auto;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .contact-form input, .contact-form textarea {
+      margin-bottom: 20px;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      color: #000;
+    }
+    .contact-form button {
+      background-color: #000;
+      color: white !important;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+    }
+    .contact-info i {
+      margin-right: 10px;
+      color: #000;
+    }
+    .contact-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #000;
+    }
+    .contact-info p {
+      text-align: left;
+    }
+    .network-section {
+      color: #000;
+      text-align: center;
+      padding: 30px 10px;
+    }
+    .network-section a {
+      color: #000;
+      margin: 0 10px;
+      font-size: 24px;
+    }
+    footer {
+      color: #000;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#hero">
+        <img src="LOGO.png" alt="Foxe Logo">
+        <span>FOXE</span>
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#meaning">About Us</a></li>
+      <li><a href="#whatwedo">What We Do</a></li>
+      <li><a href="#ourmembers">Our Members</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero" id="hero">
+  <h1 class="logo-text">FOXE</h1>
+  <p>The Market Never Sleeps, Neither Do We</p>
+</div>
+
+<!-- FOXE MEANING -->
+<div class="container" id="meaning">
+  <h2 class="section-title">FOXE Meaning</h2>
+  <div class="row">
+    <div class="col-sm-3 meaning-box">
+      <i class="fa fa-money"></i>
+      <h4>F - Financial</h4>
+      <p>Focus on finance and investment.</p>
+    </div>
+    <div class="col-sm-3 meaning-box">
+      <i class="fa fa-lightbulb-o"></i>
+      <h4>O - Opportunities</h4>
+      <p>Discover investment opportunities.</p>
+    </div>
+    <div class="col-sm-3 meaning-box">
+      <i class="fa fa-line-chart"></i>
+      <h4>X - Xponential Growth</h4>
+      <p>Pursue exponential returns on investment.</p>
+    </div>
+    <div class="col-sm-3 meaning-box">
+      <i class="fa fa-area-chart"></i>
+      <h4>E - Equities</h4>
+      <p>The core of the stock market.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE DO -->
+<div class="container" id="whatwedo">
+  <h2 class="section-title">What We Do</h2>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <i class="fa fa-pie-chart"></i>
+        <h4>Tailored Portfolio Strategies</h4>
+        <p>Foxe crafts personalized investment portfolios using advanced analytics to optimize growth and stability for your goals.</p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <i class="fa fa-bar-chart"></i>
+        <h4>Data-Driven Insights</h4>
+        <p>We provide actionable insights with AI tools, assessing risks and trends to enhance your investment decisions.</p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <i class="fa fa-shield"></i>
+        <h4>Risk Management Expertise</h4>
+        <p>Foxe ensures portfolio safety with robust strategies to mitigate market volatility and deliver consistent returns.</p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card">
+        <i class="fa fa-users"></i>
+        <h4>Client-Centric Solutions</h4>
+        <p>We offer transparent, accessible services with regular updates to support your financial success.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OUR MEMBERS -->
+<div class="container" id="ourmembers">
+  <h2 class="section-title">Our Members</h2>
+  <div class="member-container">
+    <div id="carouselMembers" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="member-box">
+            <img src="member1.jpg" alt="Member 1">
+            <div class="member-info">
+              <h4><i class="fa fa-line-chart"></i> Tran Nguyen Quynh Anh</h4>
+              <p>ID: 050610220045</p>
+              <p>Position: Equity Analyst</p>
+              <p>Task: Market trend analysis</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="member-box">
+            <img src="member2.jpg" alt="Member 2">
+            <div class="member-info">
+              <h4><i class="fa fa-bar-chart"></i> Le Phuong Hong</h4>
+              <p>ID: 050610220945</p>
+              <p>Position: Portfolio Manager</p>
+              <p>Task: Asset allocation</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="member-box">
+            <img src="member3.jpg" alt="Member 3">
+            <div class="member-info">
+              <h4><i class="fa fa-users"></i> Nguyen Thi Cuc Phuong</h4>
+              <p>ID: 050610220466</p>
+              <p>Position: Data Analyst</p>
+              <p>Task: Predictive modeling</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="member-box">
+            <img src="member4.jpg" alt="Member 4">
+            <div class="member-info">
+              <h4><i class="fa fa-cogs"></i> Phan Huu Khanh Quan</h4>
+              <p>ID: 050610221265</p>
+              <p>Position: AI Developer</p>
+              <p>Task: Automation tools</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="member-box">
+            <img src="member5.jpg" alt="Member 5">
+            <div class="member-info">
+              <h4><i class="fa fa-shield"></i> Nguyen Ngoc Diem Quynh</h4>
+              <p>ID: 050610221279</p>
+              <p>Position: Risk Manager</p>
+              <p>Task: Market risk evaluation</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="member-box">
+            <img src="member6.jpg" alt="Member 6">
+            <div class="member-info">
+              <h4><i class="fa fa-lightbulb-o"></i> Le Minh Tien</h4>
+              <p>ID: 050610221407</p>
+              <p>Position: Strategy Lead</p>
+              <p>Task: Innovation planning</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="member-box">
+            <img src="member7.jpg" alt="Member 7">
+            <div class="member-info">
+              <h4><i class="fa fa-area-chart"></i> Tran Hoang Thanh Truc</h4>
+              <p>ID: 050610220677</p>
+              <p>Position: Technical Analyst</p>
+              <p>Task: Chart pattern analysis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#carouselMembers" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#carouselMembers" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO SECTION -->
+<div class="container" id="portfolio">
+  <h2 class="section-title">Our Portfolio</h2>
+  <p class="text-center">Explore selected investment projects, curated with precision and innovation for long-term value.</p>
+  <iframe src="ISP.pdf" width="100%" height="600px" style="border: none; margin-top: 30px;"></iframe>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="contact-form">
+          <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="text" placeholder="Subject">
+            <textarea rows="4" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="contact-info">
+          <h4 class="contact-title"><i class="fa fa-map-marker"></i> Contact Us</h4>
+          <p><i class="fa fa-building"></i> FOXE FINANCE - TA_07<br>
+            <i class="fa fa-location-arrow"></i> 36 Ton That Dam, Nguyen Thai Binh Ward,<br>
+            District 1, Ho Chi Minh City</p>
+          <p><i class="fa fa-envelope"></i> honglephuong7749@gmail.com</p>
+          <p><i class="fa fa-phone"></i> 0921-500-147</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="network-section">
+  <h3>Connect with us</h3>
+  <a href="#"><i class="fa fa-facebook"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-youtube"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+</div>
+
+<footer>
+  <p>© 2025 FOXE FINANCE - TA_07. All rights reserved.</p>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
